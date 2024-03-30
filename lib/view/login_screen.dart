@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:ripplex/controller/auth_provider.dart';
 import 'package:ripplex/widgets/textfield.dart';
@@ -29,15 +28,14 @@ class LoginScreen extends StatelessWidget {
                 const SizedBox(height: 10),
                 Text(
                   "RIPPLEX",
-                  style: GoogleFonts.aldrich(
-                    textStyle: const TextStyle(
+                  style: TextStyle(
                       color: Colors.white,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
                       // letterSpacing: 7,
                     ),
                   ),
-                ),
+                
                 const SizedBox(height: 30),
                 TextFieldWidget(
                   controller: provider.emailController,
