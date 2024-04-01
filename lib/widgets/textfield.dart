@@ -19,24 +19,38 @@ class TextFieldWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
-      child: TextField(
-        obscureText: obscureText,
-        controller: controller,
-        focusNode: focusNode,
-        decoration: InputDecoration(
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(
-                color: Colors.white,
-              ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(15),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.5),
+              spreadRadius: 1.5,
+              blurRadius: 4,
+              offset: Offset(0, 3), // changes position of shadow
             ),
-            focusedBorder: const OutlineInputBorder(
+          ],
+        ),
+        child: TextField(
+          obscureText: obscureText,
+          controller: controller,
+          focusNode: focusNode,
+          decoration: InputDecoration(
+              enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-              color: Colors.white,
-            )),
-            fillColor: Colors.white,
-            filled: true,
-            hintText: hintText,
-            hintStyle: const TextStyle(color: Colors.grey)),
+                  color: Colors.white,
+                ),
+              ),
+              focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                color: Colors.white,
+              )),
+              fillColor: Colors.white,
+              filled: true,
+              hintText: hintText,
+              hintStyle: const TextStyle(color: Colors.grey)),
+        ),
       ),
     );
   }
