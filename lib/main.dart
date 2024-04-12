@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ripplex/controller/auth_provider.dart';
 import 'package:ripplex/controller/bottom_nav_provider.dart';
+import 'package:ripplex/controller/search_provider.dart';
 import 'package:ripplex/view/Auth/login_screen.dart';
-import 'package:ripplex/view/Auth/register_screen.dart';
-import 'package:ripplex/view/main_screen/bottom_nav.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,9 +22,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => BottomNavProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => SearchProvider(),
+        ),
       ],
       child: MaterialApp(
-        title: 'RIPPLEX',
+        title: 'ripplex',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
