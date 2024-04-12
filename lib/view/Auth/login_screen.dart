@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:ripplex/controller/auth_provider.dart';
+import 'package:ripplex/helper/colors.dart';
 import 'package:ripplex/view/Auth/register_screen.dart';
 import 'package:ripplex/view/main_screen/bottom_nav.dart';
 import 'package:ripplex/widgets/button.dart';
@@ -13,7 +14,6 @@ class LoginScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
     return Scaffold(
-      // Remove the backgroundColor property
       body: SingleChildScrollView(
         child: Container(
           height: size.height,
@@ -22,9 +22,9 @@ class LoginScreen extends StatelessWidget {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Color.fromARGB(255, 74, 20, 140),
-                Colors.blue,
-                Color.fromARGB(255, 74, 20, 140),
+                cPurpleARGBcolor,
+                cBlueColor,
+                cPurpleARGBcolor,
               ],
             ),
           ),
@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
             builder: (context, provider, child) {
               return Column(
                 children: [
-                  SizedBox(height: size.height / 7),
+                  SizedBox(height: size.height / 6),
                   Center(
                     child: SizedBox(
                       height: 100,
@@ -42,56 +42,51 @@ class LoginScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: size.height / 19),
+                  SizedBox(height: size.height / 28),
                   const Text(
                     "RIPPLEX",
                     style: TextStyle(
-                      color: Colors.white,
+                      color: cWhiteColor,
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
-                      // letterSpacing: 7,
+                      letterSpacing: 7,
                     ),
                   ),
                   const SizedBox(height: 30),
                   TextFieldWidget(
-                    controller: provider.emailController,
+                    controller: provider.loginEmailController,
                     hintText: "email...",
                     obscureText: false,
+                    keyboardType: TextInputType.emailAddress,
                   ),
                   TextFieldWidget(
-                    controller: provider.passwordController,
+                    controller: provider.loginPasswordController,
                     hintText: "password...",
                     obscureText: true,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 22),
                     child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: const Text(
-                            'Forgot password..?',
-                            style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
-                          ),
+                        const Text(
+                          "Doesn't have an account?",
+                          style: TextStyle(color: cWhiteColor70,fontSize: 13),
                         ),
                         TextButton(
                           onPressed: () {
-                            Navigator.of(context).pushReplacement(
-                              MaterialPageRoute(
-                                builder: (context) => const RegisterScreen(),
-                              ),
-                            );
+                            Navigator.of(context)
+                                .pushReplacement(MaterialPageRoute(
+                              builder: (context) => const RegisterScreen(),
+                            ));
                           },
-                          child: const Text(
-                            'Register...?',
+                          child: Text(
+                            "Register now",
                             style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 15,
-                                fontWeight: FontWeight.bold),
+                              fontSize: 14,
+                              fontWeight: FontWeight.bold,
+                              color: cGreyColor300,
+                            ),
                           ),
                         ),
                       ],
@@ -99,12 +94,13 @@ class LoginScreen extends StatelessWidget {
                   ),
                   SizedBox(height: size.height / 15),
                   ButtonWidget(
-                      onPress: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                          builder: (context) => BottomNavScreen(),
-                        ));
-                      },
-                      text: "Login"),
+                    onPress: () {
+                      Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        builder: (context) => const BottomNavScreen(),
+                      ));
+                    },
+                    text: "Login",
+                  ),
                 ],
               );
             },

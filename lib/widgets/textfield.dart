@@ -1,55 +1,67 @@
 import 'package:flutter/material.dart';
+import 'package:ripplex/helper/colors.dart';
 
-// ignore: must_be_immutable
 class TextFieldWidget extends StatelessWidget {
-  String hintText;
+  final String hintText;
   final bool obscureText;
   final TextEditingController controller;
   final FocusNode? focusNode;
+  final TextInputType? keyboardType;
 
-  TextFieldWidget({
+  const TextFieldWidget({
     super.key,
     required this.hintText,
     required this.obscureText,
     required this.controller,
     this.focusNode,
+   this.keyboardType,
   });
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
       child: Container(
+        width: MediaQuery.of(context).size.width * 0.8,
+        height: 50,
         decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.circular(15),
+          color: cWhiteColor,
+          borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.5),
+              color: cBlackColorWithOpacity,
               spreadRadius: 1.5,
               blurRadius: 4,
-              offset: Offset(0, 3), // changes position of shadow
+              offset: const Offset(0, 3),
             ),
           ],
         ),
-        child: TextField(
-          obscureText: obscureText,
-          controller: controller,
-          focusNode: focusNode,
-          decoration: InputDecoration(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 15),
+          child: TextField(
+            obscureText: obscureText,
+            controller: controller,
+            focusNode: focusNode,
+            keyboardType: keyboardType,
+            decoration: InputDecoration(
               enabledBorder: const OutlineInputBorder(
                 borderSide: BorderSide(
-                  color: Colors.white,
+                  color: cWhiteColor,
                 ),
               ),
               focusedBorder: const OutlineInputBorder(
-                  borderSide: BorderSide(
-                color: Colors.white,
-              )),
-              fillColor: Colors.white,
+                borderSide: BorderSide(
+                  color: cWhiteColor,
+                ),
+              ),
+              fillColor: cWhiteColor,
               filled: true,
               hintText: hintText,
-              hintStyle: const TextStyle(color: Colors.grey)),
+              hintStyle: const TextStyle(color: cGreyColor),
+              border: InputBorder.none,
+              contentPadding: const EdgeInsets.symmetric(vertical: 16),
+            ),
+          ),
         ),
       ),
     );

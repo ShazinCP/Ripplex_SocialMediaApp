@@ -1,20 +1,31 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:ripplex/helper/colors.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({Key? key});
+  const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade900,
+      backgroundColor: cGreyColor900,
       appBar: AppBar(
-        backgroundColor: Colors.purple[900],
+        backgroundColor: cPurpleColor900,
         title: const Text(
           "RIPPLEX",
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+            color: cWhiteColor,
+            letterSpacing: 5,
+          ),
         ),
         actions: [
-          IconButton(onPressed: () {}, icon: const Icon(Icons.messenger_sharp,color: Colors.white,))
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              CupertinoIcons.chat_bubble_2_fill,
+              color: cWhiteColor,
+            ),
+          )
         ],
       ),
       body: Padding(
@@ -49,7 +60,7 @@ class HomeScreen extends StatelessWidget {
       height: 140,
       width: 120,
       decoration: BoxDecoration(
-        color: const Color.fromARGB(255, 74, 20, 140),
+        color: cPurpleARGBcolor,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -70,7 +81,7 @@ class HomeScreen extends StatelessWidget {
       height: 400,
       width: double.infinity,
       decoration: const BoxDecoration(
-        color: Colors.black26,
+        color: cBkackColor26,
         borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(10),
           bottomRight: Radius.circular(10),
@@ -78,7 +89,7 @@ class HomeScreen extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Container(
+          SizedBox(
             height: 320,
             width: double.infinity,
             child: Image.asset(imagePath, fit: BoxFit.cover),
@@ -89,16 +100,16 @@ class HomeScreen extends StatelessWidget {
               children: [
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.favorite_border_outlined),
+                  icon: const Icon(CupertinoIcons.heart),
                 ),
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.message_outlined),
+                  icon: const Icon(CupertinoIcons.chat_bubble_text),
                 ),
                 const Spacer(),
                 IconButton(
                   onPressed: () {},
-                  icon: const Icon(Icons.share),
+                  icon: const Icon(CupertinoIcons.share),
                 ),
               ],
             ),
